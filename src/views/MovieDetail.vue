@@ -41,6 +41,7 @@ export default {
     const addFavorite = () => {
       if (favMovie.every(fav => fav.imdbID !== movie.value.imdbID)) {
         favMovie.push(movie.value)
+        alert("You added this movie to favorite")
       } else {
         alert("This movie is already a favourite")
       }
