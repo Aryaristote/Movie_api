@@ -12,7 +12,7 @@
       <p class="director"><b>Director:</b> {{ movie.Director }}</p>
       <p class="actors"><b>Actors:</b> {{ movie.Actors }}</p>
       <div class="fav-btn">
-        <button @click="addFavorite">Make Favorite {{ favMovie }}</button>
+        <button @click="addFavorite" :disabled="isFavourites(movie)">Make Favorite {{ favMovie }}</button>
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@ export default {
     const route = useRoute();
 
     onBeforeMount(() => {
-      fetch(`http://www.omdbapi.com/?apikey=${env.apikey}&i=${route.params.id}&plot=full`)
+      fetch(`https://www.omdbapi.com/?apikey=${env.apikey}&i=${route.params.id}&plot=full`)
         .then(response => response.json())
         .then(data => {
           console.log(data)
@@ -45,6 +45,13 @@ export default {
       console.log(favMovie);
         // favMovie.push(movie.value)
     }
+
+    // const isFavourites = () => {
+    //   return (movie) => {
+    //     return favMovie.some(fav => fav.imdbID === movie.value.imdbID)
+    //     console.log("love")
+    //   }
+    // }
 
     return {
       movie, addFavorite, 
