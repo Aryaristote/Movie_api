@@ -12,7 +12,7 @@
       <p class="director"><b>Director:</b> {{ movie.Director }}</p>
       <p class="actors"><b>Actors:</b> {{ movie.Actors }}</p>
       <div class="fav-btn">
-        <button @click="addFavorite" :disabled="isFavourites(movie)">Make Favorite {{ favMovie }}</button>
+        <button @click="addFavorite" >Make Favorite {{ favMovie }}</button>
       </div>
     </div>
   </div>
@@ -41,17 +41,12 @@ export default {
     const addFavorite = () => {
       if (favMovie.every(fav => fav.imdbID !== movie.value.imdbID)) {
         favMovie.push(movie.value)
+      } else {
+        alert("This movie is already a favourite")
       }
       console.log(favMovie);
         // favMovie.push(movie.value)
     }
-
-    // const isFavourites = () => {
-    //   return (movie) => {
-    //     return favMovie.some(fav => fav.imdbID === movie.value.imdbID)
-    //     console.log("love")
-    //   }
-    // }
 
     return {
       movie, addFavorite, 
